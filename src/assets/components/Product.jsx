@@ -2,9 +2,9 @@ import "../css/Product.css";
 import PropTypes from 'prop-types';
 import { useStateValue } from './StateProvider';
 const Product = ({id, title, image, price, rating}) => {
-  const [state, dispatch] = useStateValue();
-  const addToBasket = () => { 
-  //dispath the item into the data layer
+  const [{ basket }, dispatch] = useStateValue();
+  const addToBasket = () => {
+    //dispath the item into the data layer
     dispatch({
       type: "ADD_TO_BASKET",
       item: {
@@ -13,9 +13,9 @@ const Product = ({id, title, image, price, rating}) => {
         image: image,
         price: price,
         rating: rating,
-      }
-    })
-  }
+      },
+    });
+  };
   return (
     <div className="product">
       <div className="product__info">
